@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load static from staticfiles %}
+{% load i18n %}
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>{% block title %}{% trans 'Sherpany' %}{% endblock %}</title>
+
+  <link rel="stylesheet" href="{% static 'packages/bootstrap/css/bootstrap.css' %}"/>
+  <link rel="stylesheet" href="{% static 'packages/font-awesome/css/font-awesome.css' %}"/>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+
+  {% block extra_style %}{% endblock %}
+</head>
+<body>
+<div class="">
+  {% block content %}
+
+  {% endblock %}
+</div>
+</body>
+<script type="application/javascript" src="{% static 'js/angular.js' %}"></script>
+<script type="application/javascript" src="{% static 'js/app.js' %}"></script>
+<script type="application/javascript" src="{% static 'js/controllers.js' %}"></script>
+{% block extra_script %}{% endblock %}
+</html>

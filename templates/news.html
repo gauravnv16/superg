@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.5.3/cyborg/bootstrap.min.css"
+    integrity="sha512-QzwqVdCfEIUhmovYlJ/ET11Uh4MLuvEpwVpTVTRhChwzgfkrQH9BMcDvgwFpi5fMUGVLJAPsEXJVHuODuhmctg=="
+    crossorigin="anonymous" /> -->
+  <title>News App</title>
+  <style>
+    body{
+      background-color: #1A374D;
+    }
+    .btng{
+            color: black;
+            text-decoration: none;
+            background-color: #B1D0E0;
+            padding: 10px 30px;
+            border-radius: 5px;
+            font-family: sans-serif;
+            font-weight: 100;
+            float: right;
+            position: relative;
+            /* top: 10px; */
+            right: 10px;
+            /* left: 10px; */
+        }
+        
+        .newscard{
+          width: 900px;
+          /* margin-top: -100px; */
+        }
+        .img{
+          width: 100%;
+        }
+        .container1{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+        .head{
+          position:relative;
+          top: -1200px;
+          background-color: rgba(0, 0, 0, 0.651);
+          color: white;
+          padding: 30px;
+          /* visibility: hidden; */
+        }
+        .des{
+          position:relative;
+          top: -300px;
+          background-color: rgba(0, 0, 0, 0.651);
+          color: white;
+          padding: 30px;
+        }
+        h1{
+          font-family: sans-serif;
+          font-size: 20px;
+          letter-spacing: 2px;
+        }
+        h5{
+          font-family: sans-serif;
+          font-size: 15px;
+        }
+        .head{
+          animation: movedow 2s ease-in;
+        }
+        @keyframes movedow{
+          0%{
+            opacity: 0;
+            transform: translateY(-90px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+        .des{
+          animation: moveup 2s ease-in;
+        }
+        @keyframes moveup{
+          0%{
+            opacity: 0;
+            transform: translateY(90px);
+          }
+          100%{
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+  </style>
+</head>
+
+
+  <div class="container">
+    <a class="btng" href="/"> back</a>
+    <h4 style="color:rgb(255, 255, 255);font-size: 30px;
+    font-family: sans-serif;">News</h4>
+    <h4 > </h4>
+  </div>
+
+<!-- Card for header -->
+<div class="jumbotron" style="text-align: center; margin-top:40px">
+  <h2 style="font-size: 50px;
+  font-family: sans-serif;background-color: black;color: white;padding: 30px 0px;">Latest News</h2>
+  
+</div>
+
+<!-- Main -->
+<div class="container1">
+  {% for hl, des, img in mylist %}
+<div class="newscard">
+    <img class="img" src="{{ img }}" alt="image">
+  <div class="body">
+    <!-- <h4><span class="badge badge-primary">Headline:</span></h4> -->
+    <h1 class="head">{{ hl }}{{ value|linebreaks }}</h1>
+    <!-- <h4> <span class="badge badge-success">Description:</span></h4> -->
+    <h5 class="des">{{ des }}{{ value|linebreaks }}</h5>
+  </div>
+</div>
+  {% endfor %}
+</div>
+  </body>
+
+</html>

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block extra_style %}
+  <style>
+    #map {
+      height: 100%;
+    }
+  </style>
+{% endblock %}
+{% block content %}
+  <div ng-controller="MapController">
+    <div style="height: 500px;">
+      <div id="map"></div>
+    </div>
+    <div class="container" style="margin-top: 30px;">
+      <div class="row">
+        <div class="col-md-8">
+          <input type="text" class="form-control" ng-model="search" placeholder="{% trans 'Search Address' %}" />
+        </div>
+        <div class="col-md-4">
+          <input type="button" class="btn btn-primary " value="{% trans 'Reset All Data' %}"  ng-click="reset()" />
+        </div>
+      </div>
+      <br />
+      <div class="list-group">
+          <a href="" class="list-group-item" ng-repeat="place in places | filter :search" ng-click="get_place(place)">
+            <h4 class="list-group-item-heading">{$ place.address $}</h4>
+
+            <p class="list-group-item-text">
+              <strong>{% trans 'Latitude' %}:</strong>{$ place.latitude $}<br />
+              <strong>{% trans 'Longitude' %}:</strong>{$ place.longitude $}
+            </p>
+          </a>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% block extra_script %}
+  <script src="https://maps.googleapis.com/maps/api/js?key={{ API_KEY }}"></script>
+{% endblock %}

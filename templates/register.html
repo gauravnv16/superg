@@ -1,0 +1,71 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<style>
+    .form{
+        display: grid;
+        place-items: center;
+        position: relative;
+        top: 100px;
+        
+    }
+    .btng{
+            color: black;
+            text-decoration: none;
+            background-color: #B1D0E0;
+            padding: 10px 30px;
+            border-radius: 5px;
+            font-family: sans-serif;
+            font-weight: 100;
+            float: left;
+            position: relative;
+            top: 10px;
+            /* right: 0px; */
+            left: 10px;
+        }
+    p{
+        position: relative;
+        top:-10px;
+        font-family: sans-serif;
+        letter-spacing: 2px;
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    .inp{
+        padding: 8px 30px;
+        border-radius: 10px;
+        border: none;
+        margin-bottom: 25px;
+    }
+    .inp:focus{
+        border: none;
+        outline: none;
+    }
+    .btn{
+        padding: 8px 30px;
+        border-radius: 5px;
+        border: none;
+    }
+    .link{
+        text-decoration: none;
+    }
+</style>
+<a class="btng" href="/">back</a>
+{% for message in messages%}
+<h5>{{message}}</h5>
+{% endfor %}
+<div class="form">
+    <form method="POST" action="register">
+        <h1>Sign Up</h1>
+        {% csrf_token %}
+        <br>
+        <input class="inp" type="text" name="username" placeholder="Username"/>
+        <input class="inp" type="email" name="email" placeholder="Email" />
+        <input class="inp" type="password" name="password1" placeholder="Password" />
+        <input class="inp" type="password" name="password2" placeholder="Repeat Password" />
+        <p>Already existing user? <a class="link" href="/login">login</a></p>
+        <input class="btn" type="submit" />
+        </form>
+</div>

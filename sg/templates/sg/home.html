@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 100vh;
+            background-image: url(https://images.unsplash.com/photo-1542395975-d6d3ddf91d6e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            overflow-y: hidden;
+        }
+        .container{
+            display: grid;
+            place-items: center;
+            /* background-color: rgba(0, 0, 0, 0.582);/ */
+            /* color: white; */
+        }
+        .btng{
+            color: black;
+            text-decoration: none;
+            background-color: #B1D0E0;
+            padding: 10px 30px;
+            border-radius: 5px;
+            font-family: sans-serif;
+            font-weight: 100;
+            float: left;
+            position: relative;
+            top: 10px;
+            /* right: 50px; */
+        }
+          .btng2{
+            color: black;
+            text-decoration: none;
+            background-color: #B1D0E0;
+            padding: 10px 30px;
+            border-radius: 5px;
+            font-family: sans-serif;
+            font-weight: 100;
+            top:20px;
+            
+        }
+        h2{
+            display: inline;
+            
+        }
+        .flexg{
+            display: flex;
+            position: relative;
+            top: 50px;
+            flex-direction: column;
+            width: fit-content;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.712);
+            font-family: sans-serif;
+            color: white;
+            padding: 20px 300px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <a href="/" class="btng">back</a>
+    <div class="container">
+        <div class="flexg">
+            <h1>SuperG Dashboard</h1>
+            <h2>Username : </h2><p>{{user.username}}</p>
+            <br>
+            <h2>Email : </h2><p>{{user.email}}</p></h2>
+            <br>
+            <a href="/logout" class="btng2">Log Out</a>
+        </div>
+        
+    </div>
+    
+</body>
+</html>

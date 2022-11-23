@@ -1,0 +1,165 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperG</title>
+    <link rel="stylesheet" href="{% static 'mainpage/style.css' %}">
+
+    <!-- icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css" integrity="sha384-wESLQ85D6gbsF459vf1CiZ2+rr+CsxRY0RpiF1tLlQpDnAgg6rwdsUF1+Ics2bni" crossorigin="anonymous">
+
+       <!-- font -->
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+       <link href="https://fonts.googleapis.com/css2?family=Teko:wght@500&display=swap" rel="stylesheet">
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+       <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=PT+Sans+Narrow:wght@700&family=Rajdhani:wght@600&family=Teko:wght@500&display=swap" rel="stylesheet">
+       <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200&display=swap" rel="stylesheet">
+       <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+ 
+</head>
+<body>
+    <img class="logo" src="{% static 'images/s (1).png' %}">
+
+
+    {% if user.is_authenticated %}
+    <a href="/logout">logout</a>
+     <!-- menu box -->
+
+     <div class="container">
+        <div class="inner">
+            <span><img src="https://img.icons8.com/material-outlined/24/000000/menu--v1.png"/></span>
+            <div class="app_holder">
+                <div class="gg">
+                 <br>
+                 <br>
+                <ul class="apps">
+                    <li>
+                        <a target=_blank href="https://www.google.co.in/"><img class="spc" src="{% static 'sourses/google.png' %}" alt="google"></a>
+                    </li>
+                    <li>
+                        <a target=_blank href="https://mail.google.com/mail/u/0/?tab=rm#inbox"><img class="spc" src="{% static 'sourses/gmail.png' %}"  alt="google"></a>
+                    </li>
+                    <li>
+                        <a target=_blank href="https://www.instagram.com/"><img class="spc" src="{% static 'sourses/instagram.png' %}" alt="google"></a>
+                    </li>
+                </ul>
+                <ul class="apps">
+                    <li>
+                        <a target=_blank href="https://www.youtube.com/"><img class="spc" src="{% static 'sourses/youtube.png' %}" alt="google"></a>
+                    </li>
+                    <li>
+                        <a target=_blank href="https://www.netflix.com/in/"><img class="spc" src="{% static 'sourses/netflix.png' %}"  alt="google"></a>
+                    </li>
+                    <li>
+                        <a target=_blank href="https://www.snapchat.com/"><img class="spc" src="{% static 'sourses/snapchat.png' %}" alt="google"></a>
+                    </li>
+                </ul>
+                <ul class="apps">
+                    <li>
+                        <a target=_blank href="https://web.whatsapp.com/"><img class="spc" src="{% static 'sourses/whatsapp.png' %}" alt="google"></a>
+                    </li>
+                    <li>
+                        <a target=_blank href="https://classroom.google.com/"><img class="spc" src="{% static 'sourses/google-classroom.png' %}" alt="google"></a>
+                    </li>
+                </ul>
+</div>
+
+            </div>
+        </div>
+    </div>
+    {% else %}
+        <a class="btn" href="/register">register</a>
+        <a href="/login">login</a>
+    {% endif %}
+<!-- time -->
+<div class="dat">
+    {% if user.is_authenticated %}
+        <p id="demo">Welcome,{{user.username}} </p>
+    {% else %}
+        <p id="demo">Welcome, User </p>
+    {% endif %}
+    <h1 id="week"></h1>
+    <hr class="line"/>
+    <h4 id="time"></h4>
+    <p id="date"></p>
+</div>
+
+    <script>
+var myVar = setInterval(myTimer, 1000);
+function myFunction(x) {
+  x.classList.toggle("change");
+}
+
+function myTimer() {
+  var d = new Date();
+  var t = d.toLocaleTimeString();
+  var da= d.getFullYear();
+  var dy= d.getDate();
+  var dm= d.getMonth()+1;
+  var h = d.getHours();
+  var m = d.getMinutes();
+  if (h<12 ){
+    if(h<10){
+      if(m<10)
+      {document.getElementById("time").innerHTML = "0"+ String(h)+ ":" +"0"+ m + " " +"AM";}
+      else{
+          document.getElementById("time").innerHTML = "0"+ String(h)+ ":" + m + " " +"AM";
+      }
+    }
+    else{
+      if(m<10)
+      {document.getElementById("time").innerHTML =  String(h)+ ":" +"0"+ m + " " +"AM";}
+      else{
+          document.getElementById("time").innerHTML = String(h)+ ":" + m + " " +"AM";
+      }
+    }
+  }
+  else{
+    if (h-12<10){
+        if(m<10)
+        {document.getElementById("time").innerHTML = "0"+ String(h-12)+ ":" +"0"+ m + " " +"PM";}
+        else{
+            document.getElementById("time").innerHTML = h-12+ ":" + m + " " +"PM";
+        }
+    }
+    else{
+        if(m<10)
+        {document.getElementById("time").innerHTML = String(h-12)+ ":" +"0"+ m + " " +"PM";}
+        else{
+            document.getElementById("time").innerHTML = String(h-12)+ ":" + m + " " +"PM";
+        }
+    }
+  }
+ 
+  const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];;
+
+
+
+if (dy<10) 
+  {document.getElementById("date").innerHTML = months[d.getMonth()] +" " +"0"+dy + " " +da;}
+
+  else{
+    document.getElementById("date").innerHTML = months[d.getMonth()] +" " + dy + " " +da;
+  }
+
+document.getElementById("week").innerHTML = days[d.getDay()].slice(0,3);
+
+}
+
+function myStopFunction() {
+  clearInterval(myVar);
+}
+
+
+    </script>
+</body>
+</html>
